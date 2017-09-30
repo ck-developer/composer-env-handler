@@ -19,20 +19,26 @@
     ],
     "require": {
         "php": "^7.0",
-        "composer-plugin-api": "^1.1"
+        "symfony/dotenv": "^3.3"
     },
     "require-dev": {
-        "composer/composer": "^1.4"
+        "composer/composer": "^1.5",
+        "phpunit/phpunit": "^6.3",
+        "phpspec/prophecy-phpunit": "^1.1"
     },
     "autoload": {
         "psr-4": {
-            "Ck\\Composer\\": "src/"
+            "Ck\\EnvHandler\\": "src/"
         }
     },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
-        },
-        "class": "Ck\\Composer\\EnvHandlerPlugin"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Ck\\EnvHandler\\ScriptHandler::buildParameters"
+        ]
     }
 }
